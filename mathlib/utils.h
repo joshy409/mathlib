@@ -28,7 +28,7 @@ T max(T a, T b, Args... args) {
 
 //returns value no smaller than min and no larger than max
 template<typename T>
-T clamp(T value, int min, int max) {
+T clamp(T value, T min, T max) {
 	value < min ? min : value;
 	value > max ? max : value;
 	return value;
@@ -70,12 +70,12 @@ template<typename T>
 T moveTowards(T current, T target, T maxDelta) {
 	if (current > target) {
 		current += maxDelta;
-		current = clamp(current, , target);
+		current = clamp(current, current, target);
 		return current;
 	}
 	else if (current < target) {
 		current -= maxDelta;
-		current = clamp(target, , current);
+		current = clamp(current, target, current);
 		return current;
 	}
 	else {
