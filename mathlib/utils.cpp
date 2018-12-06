@@ -1,25 +1,5 @@
 #include "utils.h"
 
-int min(int a, int b) {
-	return a < b ? a : b;
-}
-
-int max(int a, int b) {
-	return a > b ? a : b;
-}
-
-int clamp(int value, int min, int max) {
-	value < min ? min : value;
-	value > max ? max : value;
-	return value;
-}
-
-
-int abs(int val)
-{
-	return val < 0 ? val * -1 : val;
-}
-
 int pow(int base, int power)
 {
 	int temp = base;

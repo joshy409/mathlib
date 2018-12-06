@@ -1,13 +1,38 @@
 #pragma once
 #include "math.h"
 //returns smaller of the two
-int min(int a, int b);
+template<typename T>
+T min(T a, T b)
+{
+	return a < b ? a : b;
+}
+
+//returns smaller of the two
+template<typename T, typename... Args>
+T min(T a, T b, Args... args) {
+	return (a < b ? min (a,args...) : min(b,args...));
+}
 
 //returns larger of the two
-int max(int a, int b);
+template<typename T>
+T max(T a, T b)
+{
+	return a > b ? a : b;
+}
+
+//returns larger of the two
+template<typename T, typename... Args>
+T max(T a, T b, Args... args) {
+	return (a > b ? max(a, args...) : max(b, args...));
+}
 
 //returns value no smaller than min and no larger than max
-int clamp(int value, int min, int max);
+template<typename T>
+T clamp(T value, int min, int max) {
+	value < min ? min : value;
+	value > max ? max : value;
+	return value;
+}
 
 //Defined as PI 
 const double PI = 3.141592653589793238;
@@ -17,7 +42,10 @@ const double DEG_TO_RAD = PI/180;
 const double RAD_TO_DEG = 180/PI;
 
 //returns the absolute value of val
-int abs(int val);
+template<typename T>
+T abs(T val) {
+	return val < 0 ? val * -1 : val;
+}
 
 //return base to the power of exp
 int pow(int base, int power);

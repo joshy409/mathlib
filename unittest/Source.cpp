@@ -3,8 +3,9 @@
 #include "utils.h"
 int main() {
 
-	assert(min(2, 3) == 2); // the min value of 2, 3 is 2
+	assert(min(2, 3, 4) == 2); // the min value of 2, 3, 4 is 2
 	assert(max(2, 3) == 3); // the max value of 2, 3 is 3
+	assert(max(2, 3, 4) == 4); // the max value of 2, 3, 4 is 4
 	assert(abs(-5) == 5);       // the abs value of -5 is 5
 	assert(clamp(3, 1, 6) == 3); // 3 clamped between 1 ~ 6 is 3
 	assert(clamp(0, 1, 6) == 0); // 0 clamped between 1 ~ 6 is 0
