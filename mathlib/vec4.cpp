@@ -116,7 +116,7 @@ vec4 & vec4::normalize()
 	return *this;
 }
 
-vec4 vec4::getNormalised()
+vec4 vec4::getNormalised() const
 {
 	float mag = this->magnitude();
 	return vec4(x / mag, y / mag, z / mag, t / mag);

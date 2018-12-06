@@ -113,7 +113,7 @@ vec3 & vec3::normalize()
 	return *this;
 }
 
-vec3 vec3::getNormalised()
+vec3 vec3::getNormalised() const
 {
 	float mag = this->magnitude();
 	return  vec3(x / mag, y / mag, z/ mag);
