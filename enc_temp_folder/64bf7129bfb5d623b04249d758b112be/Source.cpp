@@ -24,6 +24,19 @@ int main() {
 	assert(nextPowerOfTwo(64) == 128); // next power of two after 64 is 128
 	assert(moveTowards(6, 0, 1) == 5); // 6 moving toward 0 with delta being 1 = 5
 	assert(moveTowards(0, 3, 1) == 1); // 0 moving toward 3 with delta being 1 = 1
-	
+	Vector2 v2a(13.5f, -48.23f), v2b(5, 3.99f), v2c;
+	v2c = v2a + v2b;
+	Vector3 v3a(13.5f, -48.23f, 862), v3b(5, 3.99f, -12), v3c;
+	v3c = v3a + v3b;
+	Vector4 v4a(13.5f, -48.23f, 862, 0), v4b(5, 3.99f, -12, 1), v4c;
+	v4c = v4a + v4b;
+
+	v2a = Vector2(13.5f, -48.23f);
+	v2c = v2a * 2.482f;
+	v3a = Vector3(13.5f, -48.23f, 862);
+	v3c = v3a * 0.256f;
+	v4a = Vector4(13.5f, -48.23f, 862, 0);
+	v4c = v4a * 4.89f;
+
 	return 0;
 }

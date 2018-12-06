@@ -69,12 +69,12 @@ int nextPowerOfTwo(int val);
 template<typename T>
 T moveTowards(T current, T target, T maxDelta) {
 	if (current > target) {
-		current += maxDelta;
+		current -= maxDelta;
 		current = clamp(current, current, target);
 		return current;
 	}
 	else if (current < target) {
-		current -= maxDelta;
+		current += maxDelta;
 		current = clamp(current, target, current);
 		return current;
 	}
