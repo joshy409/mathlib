@@ -14,7 +14,8 @@ int main() {
 	assert(isPowerOfTwo(124) == false); // 124 is not a power of 2
 	assert(isPowerOfTwo(128) == true); // 128 is a power of 2
 	assert(nextPowerOfTwo(63) == 64); // next power of two after 63 is 64
-	assert(nextPowerOfTwo(64) == 128); //next power of two after 64 is 128
-
+	assert(nextPowerOfTwo(64) == 128); // next power of two after 64 is 128
+	assert(moveTowards(6, 0, 1) == 5); // 6 moving toward 0 with delta being 1 = 5;
+	assert(moveTowards(0, 3, 1) == 1); // 0 moving toward 3 with delta being 1 = 1;
 	return 0;
 }
