@@ -40,6 +40,8 @@ struct vec2
 
 	vec2 getPerpCW() const;
 	vec2 getPerpCCW() const;
+
+	float angleBetween(const vec2 &rhs) const;
 };
 
 vec2 operator*(const float lhs, const vec2 &rhs);
