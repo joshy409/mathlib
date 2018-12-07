@@ -101,9 +101,15 @@ float vec2::dot(const vec2 & rhs) const
 
 vec2 & vec2::normalize()
 {
-	float mag = this->magnitude();
-	x /= mag; y /= mag;
-	return *this;
+	
+	if (x == 0 || y == 0) {
+		return *this;
+	}
+	else {
+		float mag = this->magnitude();
+		x /= mag; y /= mag;
+		return *this;
+	}
 }
 
 vec2 vec2::getNormalized() const
@@ -121,6 +127,16 @@ vec2 & vec2::scale(const vec2 & rhs)
 vec2 vec2::getScaled(const vec2 & rhs) const
 {
 	return vec2(x* rhs.x, y * rhs.y);
+}
+
+vec2 vec2::getPerpCW() const
+{
+	return vec2(y,-x);
+}
+
+vec2 vec2::getPerpCCW() const
+{
+	return vec2(-y,x);
 }
 
 

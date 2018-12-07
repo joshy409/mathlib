@@ -1,5 +1,6 @@
 #pragma once
 #include "math.h"
+
 //returns smaller of the two
 template<typename T>
 T min(T a, T b)
@@ -35,11 +36,11 @@ T clamp(T value, T min, T max) {
 }
 
 //Defined as PI 
-constexpr double PI = 3.141592653589793238;
+//constexpr double PI = 3.141592653589793238;
 //Multiply this with a angle measure expressed in degrees to get its equivalent in radians.
-constexpr double DEG_TO_RAD = PI/180;
+//constexpr double DEG_TO_RAD = PI/180;
 //Multiply this with a angle measure expressed in radians to get its equivalent in degrees.
-constexpr double RAD_TO_DEG = 180/PI;
+//constexpr double RAD_TO_DEG = 180/PI;
 
 //returns the absolute value of val
 template<typename T>

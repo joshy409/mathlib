@@ -4,6 +4,7 @@
 
 struct vec2
 {
+
 	float x, y;
 
 	vec2();
@@ -36,6 +37,9 @@ struct vec2
 
 	vec2 &scale(const vec2 &rhs);
 	vec2 getScaled(const vec2 &rhs) const;
+
+	vec2 getPerpCW() const;
+	vec2 getPerpCCW() const;
 };
 
 vec2 operator*(const float lhs, const vec2 &rhs);
