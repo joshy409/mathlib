@@ -88,7 +88,8 @@ int main()
 		}
 
 		DrawText(std::to_string(radius).c_str(), 100, 100, 50, BLACK);
-		DrawText(std::to_string(sprites.size()).c_str(), 100, 150, 50, BLACK);
+		DrawText(std::to_string(sprites.size()).c_str(), 100, 150, 50, BLACK); 
+			 
 
 
 		for (int z = 0; z < screenWidth; z++) {
