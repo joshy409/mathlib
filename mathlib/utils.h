@@ -30,17 +30,17 @@ T max(T a, T b, Args... args) {
 //returns value no smaller than min and no larger than max
 template<typename T>
 T clamp(T value, T min, T max) {
-	value < min ? min : value;
-	value > max ? max : value;
+	value < min ? value = min : value;
+	value > max ? value = max : value;
 	return value;
 }
 
 //Defined as PI 
-//constexpr double PI = 3.141592653589793238;
+constexpr double PI2 = 3.141592653589793238;
 //Multiply this with a angle measure expressed in degrees to get its equivalent in radians.
-//constexpr double DEG_TO_RAD = PI/180;
+constexpr double DEG_TO_RAD2 = PI2/180;
 //Multiply this with a angle measure expressed in radians to get its equivalent in degrees.
-//constexpr double RAD_TO_DEG = 180/PI;
+constexpr double RAD_TO_DEG2 = 180/PI2;
 
 //returns the absolute value of val
 template<typename T>

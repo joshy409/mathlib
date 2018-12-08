@@ -4,7 +4,29 @@
 
 struct vec2
 {
+#ifdef RAYLIB_H
+	// constructor vec2 from Vector2
+	vec2(Vector2 vec)
+	{
+		x = vec.x;
+		y = vec.y;
+	}
 
+	// convert from Vector2 to vec2
+	vec2& operator =(const Vector2 &rhs)
+	{
+		x = rhs.x;
+		y = rhs.y;
+
+		return *this;
+	}
+
+	// convert from vec2 to Vector2
+	operator Vector2()
+	{
+		return { x , y };
+	}
+#endif
 	float x, y;
 
 	vec2();
@@ -42,6 +64,9 @@ struct vec2
 	vec2 getPerpCCW() const;
 
 	float angleBetween(const vec2 &rhs) const;
+
+
+
 };
 
 vec2 operator*(const float lhs, const vec2 &rhs);

@@ -141,11 +141,18 @@ vec2 vec2::getPerpCCW() const
 
 float vec2::angleBetween(const vec2 & rhs) const
 {
+
 	float temp = this->dot(rhs);
 	float mag = this->magnitude();
 	float rhsMag = rhs.magnitude();
-
-	return acos(temp / (mag*rhsMag)) * 180/3.1415925;
+	float angle = acos(temp / (mag*rhsMag)) * RAD_TO_DEG2;
+	if (rhs.y < y) {
+		return angle;
+	}
+	else {
+		return 360 - angle;
+		//return 2*PI2-angle;
+	}
 
 }
 
