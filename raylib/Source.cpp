@@ -28,7 +28,6 @@ int main()
 	sprites.push_back(sprite.clone());
 	sprites.push_back(sprite.clone());
 
-	std::vector<vec2> paths;
 	float speed = 100;
 	float radius = 100;
 	int spaceCount = 0;
@@ -41,11 +40,13 @@ int main()
 	sprite.destination = vec2{ (float)rand(0,screenWidth), (float)rand(0,screenHeight) };
 	//--------------------------------------------------------------------------------------
 
-	
+	RenderTexture test = LoadRenderTexture(screenWidth, screenHeight);
+	RenderTexture second = LoadRenderTexture(screenWidth, screenHeight);
 
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
+
 		// Update
 		//----------------------------------------------------------------------------------
 		// TODO: Update your variables here
@@ -102,15 +103,27 @@ int main()
 		}
 		//----------------------------------------------------------------------------------
 
+		//move
+		sprite.moveTowards(sprite.destination.getNormalized());
+
+		BeginTextureMode(second);
+		ClearBackground(BLANK);
+		DrawTexture(test.texture, 0, 0, WHITE);
+		EndTextureMode();
+
+		BeginTextureMode(test);
+		ClearBackground(BLANK);
+		DrawTexture(second.texture, 0, 0, WHITE);
+		DrawPixel(sprite.getPos().x + sprite.texture.width / 2, sprite.getPos().y + sprite.texture.height / 2, BLACK);
+		EndTextureMode();
+
 		// Draw
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
 
 		ClearBackground(RAYWHITE);
 
-		//draw all sprites
-		sprite.moveTowards(sprite.destination.getNormalized());
-		paths.push_back(sprite.getPos());
+		DrawTexture(second.texture, 0, 0, WHITE);
 
 		sprite.draw();
 		for (auto &outer : sprites) {
@@ -129,18 +142,15 @@ int main()
 		}*/
 
 		//draws the path the original has travelled
-		for (auto pos : paths) {
+		/*for (auto pos : paths) {
 			DrawPixel(pos.x + sprite.texture.width / 2, pos.y + sprite.texture.height / 2, BLACK);
-		}
-
+		}*/
+		
 		EndDrawing();
 
 		//reset parameters
 		spaceCount = 0;
 		degrees > 360 ? degrees = 0 : degrees *= 1;
-		//std::vector<vec2>::iterator it;
-		//it = std::unique(paths.begin(), paths.end());
-		//paths.resize(std::distance(paths.begin(), it));
 
 		//----------------------------------------------------------------------------------
 	}
