@@ -1,5 +1,8 @@
 #pragma once
 #include "math.h"
+#include <string>
+#include <stdint.h>
+
 
 //returns smaller of the two
 template<typename T>
@@ -71,16 +74,36 @@ template<typename T>
 T moveTowards(T current, T target, T maxDelta) {
 	if (current > target) {
 		current -= maxDelta;
-		current = clamp(current, current, target);
+		current = clamp(current, target, current);
 		return current;
 	}
 	else if (current < target) {
 		current += maxDelta;
-		current = clamp(current, target, current);
+		current = clamp(current, current, target);
 		return current;
 	}
 	else {
 		return current;
 	}
+}
+
+// seed the random number generator
+void seedRand(int seedValue);
+
+// returns the seed used for the random number generator
+uint32_t getRandSeed(uint64_t _seed = 1);
+
+// returns a random value between min and max
+template<typename T>
+T rand(T min, T max) {
+	uint32_t seed = getRandSeed();
+	return seed % (max - min + 1) + min;
+}
+
+// returns a random value between min and max
+//  - the value may contain decimal components
+template<typename T>
+T randDecimal(T min, T max) {
+	return T();
 }
 

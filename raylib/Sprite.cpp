@@ -38,6 +38,23 @@ void Sprite::movePos(const vec2 _pos)
 	pos += _pos;
 }
 
+void Sprite::moveTowards(const vec2 _pos)
+{
+	pos += _pos;
+	if (pos.x > 1856) {
+		pos.x = 0;
+	}
+	if (pos.x < 0) {
+		pos.x = 1856;
+	}
+	if (pos.y > 1024) {
+		pos.y = 0;
+	}
+	if (pos.y < 0) {
+		pos.y = 1024;
+	}
+}
+
 Sprite Sprite::clone()
 {
 	return Sprite();

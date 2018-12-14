@@ -12,8 +12,10 @@ public:
 	void resetPos();
 	vec2 getPos();
 	void movePos(const vec2 _pos);
+	void moveTowards(const vec2 _pos);
 	Sprite clone();
 	Texture2D texture;
+	vec2 destination;
 
 private:
 	
