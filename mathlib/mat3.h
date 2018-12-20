@@ -50,6 +50,24 @@ public:
 	// returns true if the matrices are inequal
 	bool operator!=(const mat3 &rhs) const;
 
+	// returns a 3x3 identity matrix
+	static mat3 identity();
+
+	// updates the matrix elements with the given values
+	void set(float m1, float m2, float m3,
+		float m4, float m5, float m6,
+		float m7, float m8, float m9);
+
+	// updates the matrix elements with the given values from the given array
+	void set(float *ptr);
+
+	// transposes the matrix
+	void transpose();
+	// returns a transposed copy of the matrix
+	mat3 getTranspose();
+
+	//returns a inverse copy of the matrix
+	mat3 getInverse() const;
 private:
-	void populate(const vec3 *rhs);
+	void populate();
 };

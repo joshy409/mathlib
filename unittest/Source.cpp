@@ -26,19 +26,42 @@ int main() {
 
 	mat3 a;
 	for (int i = 0; i < 9; i++) {
-		std::cout << a.m[i] << std::endl;
+		std::cout << a.m[i] << " ";
 	}
+
 	
+	std::cout << std::endl;
 
 	mat3 b = { 9,8,7,6,5,4,3,2,1 };
 	for (int i = 0; i < 9; i++) {
-		std::cout << b.m[i] << std::endl;
+		std::cout << b.m[i] << " ";
 	}
-
+	std::cout << std::endl;
 	float z[9] = { 1,2,3,4,5,6,7,8,9 };
 	mat3 c = z;
 	for (int i = 0; i < 9; i++) {
-		std::cout << c.m[i] << std::endl;
+		std::cout << c.m[i] << " ";
 	}
+	std::cout << std::endl;
+
+	float* ee = a;
+
+	for (int i = 0; i < 9; i++) {
+		std::cout << ee[i] << " ";
+	}
+	std::cout << std::endl;
+	vec3 d = c[0];
+
+	std::cout << d.x << " " << d.y << " " << d.z;
+	std::cout << std::endl;
+	vec3 f = c[1];
+	std::cout << f.x << " " << f.y << " " << f.z;
+	std::cout << std::endl;
+	vec3 g = c[2];
+	std::cout << g.x << " " << g.y << " " << g.z;
+	std::cout << std::endl;
+
+
+	
 	return 0;
 }
