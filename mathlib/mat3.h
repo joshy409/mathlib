@@ -68,6 +68,5 @@ public:
 
 	//returns a inverse copy of the matrix
 	mat3 getInverse() const;
-private:
-	void populate();
+
 };
