@@ -34,7 +34,7 @@ int main()
 	int maxCount = 5;
 	float degrees = 0;
 	float z = 0;
-	SetTargetFPS(300);
+	SetTargetFPS(2000);
 	seedRand(time(NULL));
 	int frames = 0;
 	sprite.destination = vec2{ (float)rand(0,screenWidth), (float)rand(0,screenHeight) };

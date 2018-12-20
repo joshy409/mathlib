@@ -4,9 +4,7 @@
 #include "vec2.h"
 #include "vec3.h"
 #include "vec4.h"
-typedef vec2 Vector2;
-typedef vec3 Vector3;
-typedef vec4 Vector4;
+#include "mat3.h"
 
 int main() {
 
@@ -25,16 +23,22 @@ int main() {
 	//assert(moveTowards(6, 0, 1) == 5); // 6 moving toward 0 with delta being 1 = 5
 	//assert(moveTowards(0, 3, 1) == 1); // 0 moving toward 3 with delta being 1 = 1
 
-	seedRand(675248);
-	int a = 675248;
-	a = pow(a, 2);
-	std::cout << a << std::endl;
 
-	std::cout << rand(4000, 4000) << std::endl;
+	mat3 a;
+	for (int i = 0; i < 9; i++) {
+		std::cout << a.m[i] << std::endl;
+	}
 	
-	a = 332812;
-	a = pow(a, 2);
-	std::cout << a << std::endl;
-	std::cout << rand(1, 999999) << std::endl;
+
+	mat3 b = { 9,8,7,6,5,4,3,2,1 };
+	for (int i = 0; i < 9; i++) {
+		std::cout << b.m[i] << std::endl;
+	}
+
+	float z[9] = { 1,2,3,4,5,6,7,8,9 };
+	mat3 c = z;
+	for (int i = 0; i < 9; i++) {
+		std::cout << c.m[i] << std::endl;
+	}
 	return 0;
 }
