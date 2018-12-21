@@ -2,6 +2,14 @@
 #include "vec3.h"
 #include "vec2.h"
 
+/*
+my matrix orientation
+ x y z   x  y  z     x    y    z
+[1 4 7] [x1 y1 z1] [m[0] m[3] m[6]]
+[2 5 8] [x2 y2 y3] [m[1] m[4] m[7]]
+[3 6 9] [x3 y3 z3] [m[2] m[5] m[8]]
+*/
+
 struct mat3
 {
 public:
@@ -16,9 +24,10 @@ public:
 		vec3 axis[3];
 		struct
 		{
-			float m1, m2, m3,
-				m4, m5, m6,
-				m7, m8, m9;
+			float x1, x2, x3,
+				  y1, y2, y3,
+				  z1, z2, z3;
+
 		};
 		struct
 		{
@@ -32,9 +41,10 @@ public:
 
 	mat3();
 	mat3(float *ptr);
-	mat3(float m1, float m2, float m3,
-		float m4, float m5, float m6,
-		float m7, float m8, float m9);
+	mat3(float x1, float x2, float x3,
+		float y1, float y2, float y3,
+		float z1, float z2, float z3);
+
 
 	// implicit operator to convert mat3 into a float array
 	operator float *();
@@ -56,9 +66,9 @@ public:
 	static mat3 identity();
 
 	// updates the matrix elements with the given values
-	void set(float m1, float m2, float m3,
-		float m4, float m5, float m6,
-		float m7, float m8, float m9);
+	void set(float x1, float x2, float x3,
+		float y1, float y2, float y3,
+		float z1, float z2, float z3);
 
 	// updates the matrix elements with the given values from the given array
 	void set(float *ptr);

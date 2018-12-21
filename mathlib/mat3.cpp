@@ -10,16 +10,15 @@ mat3::mat3()
 mat3::mat3(float * ptr)
 {
 	std::copy(ptr, ptr + 9, m);
-	xAxis = { m[0],m[1],m[2] };
-	yAxis = { m[3],m[4],m[5] };
-	zAxis = { m[6],m[7],m[8] };
 }
 
-mat3::mat3(float _m1, float _m2, float _m3, float _m4, float _m5, float _m6, float _m7, float _m8, float _m9)
+mat3::mat3(float _x1, float _x2, float _x3,
+	float _y1, float _y2, float _y3,
+	float _z1, float _z2, float _z3)
 {
-	xAxis = { _m1,_m2,_m3 };
-	yAxis = { _m4,_m5,_m6 };
-	zAxis = { _m7,_m8,_m9 };
+	xAxis = { _x1,_x2,_x3 };
+	yAxis = { _y1,_y2,_y3 };
+	zAxis = { _z1,_z2,_z3 };
 }
 
 mat3::operator float*()
@@ -35,34 +34,34 @@ vec3 & mat3::operator[](const int index)
 mat3 mat3::operator*(const mat3 & rhs) const
 {
 	mat3 temp;
-	temp.xAxis = vec3{m1*rhs.m1 + m2 * rhs.m4 + m3 * rhs.m7,
-					  m1*rhs.m2 + m2 * rhs.m5 + m3 * rhs.m8,
-					  m1*rhs.m3 + m2 * rhs.m6 + m3 * rhs.m9, };
+	temp.xAxis = vec3{ x1*rhs.x1 + y1 * rhs.x2 + z1 * rhs.x3,
+		               x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
+		               x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3, };
 
-	temp.yAxis = vec3{m4*rhs.m1 + m5 * rhs.m4 + m6 * rhs.m7,
-					  m4*rhs.m2 + m5 * rhs.m5 + m6 * rhs.m8,
-					  m4*rhs.m3 + m5 * rhs.m6 + m6 * rhs.m9, };
+	temp.yAxis = vec3{ x2*rhs.x1 + y2 * rhs.x1 + z2 * rhs.x1,
+		               x2*rhs.y2 + y2 * rhs.y2 + z2 * rhs.y3,
+		               x2*rhs.z2 + y2 * rhs.z2 + z2 * rhs.z3, };
 
-	temp.zAxis = vec3{ m7*rhs.m1 + m8 * rhs.m4 + m9 * rhs.m7,
-					   m7*rhs.m2 + m8 * rhs.m5 + m9 * rhs.m8,
-					   m7*rhs.m3 + m8 * rhs.m6 + m9 * rhs.m9, };
+	temp.zAxis = vec3{ x3*rhs.x1 + y3 * rhs.x1 + z3 * rhs.x1,
+		               x3*rhs.y2 + y3 * rhs.y2 + z3 * rhs.y3,
+		               x3*rhs.z2 + y3 * rhs.z2 + z3 * rhs.z3, };
 
 	return temp;
 }
 
 mat3 & mat3::operator*=(const mat3 & rhs)
 {
-	xAxis = vec3{ m1*rhs.m1 + m2 * rhs.m4 + m3 * rhs.m7,
-		m1*rhs.m2 + m2 * rhs.m5 + m3 * rhs.m8,
-		m1*rhs.m3 + m2 * rhs.m6 + m3 * rhs.m9, };
+	xAxis = vec3{ x1*rhs.x1 + y1 * rhs.x2 + z1 * rhs.x3,
+		          x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
+		          x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3, };
 
-	yAxis = vec3{ m4*rhs.m1 + m5 * rhs.m4 + m6 * rhs.m7,
-		m4*rhs.m2 + m5 * rhs.m5 + m6 * rhs.m8,
-		m4*rhs.m3 + m5 * rhs.m6 + m6 * rhs.m9, };
+	yAxis = vec3{ x2*rhs.x1 + y2 * rhs.x1 + z2 * rhs.x1,
+		          x2*rhs.y2 + y2 * rhs.y2 + z2 * rhs.y3,
+		          x2*rhs.z2 + y2 * rhs.z2 + z2 * rhs.z3, };
 
-	zAxis = vec3{ m7*rhs.m1 + m8 * rhs.m4 + m9 * rhs.m7,
-		m7*rhs.m2 + m8 * rhs.m5 + m9 * rhs.m8,
-		m7*rhs.m3 + m8 * rhs.m6 + m9 * rhs.m9, };
+	zAxis = vec3{ x3*rhs.x1 + y3 * rhs.x1 + z3 * rhs.x1,
+		          x3*rhs.y2 + y3 * rhs.y2 + z3 * rhs.y3,
+		          x3*rhs.z2 + y3 * rhs.z2 + z3 * rhs.z3, };
 
 	return *this;
 }
@@ -94,22 +93,21 @@ mat3 mat3::identity()
 	return mat3(1,0,0,0,1,0,0,0,1);
 }
 
-//change to row base?
-void mat3::set(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9)
+void mat3::set(float _x1, float _x2, float _x3,
+	float _y1, float _y2, float _y3,
+	float _z1, float _z2, float _z3)
 {
-	xAxis = vec3{ m1,m2,m3 };
-	yAxis = vec3{ m4,m5,m6 };
-	zAxis = vec3{ m7,m8,m9 };
+	xAxis = { _x1,_x2,_x3 };
+	yAxis = { _y1,_y2,_y3 };
+	zAxis = { _z1,_z2,_z3 };
 }
 
 void mat3::set(float * ptr)
 {
 	std::copy(ptr, ptr + 9, m);
-	xAxis = { m[0],m[1],m[2] };
-	yAxis = { m[3],m[4],m[5] };
-	zAxis = { m[6],m[7],m[8] };
 }
 
+//TODO
 void mat3::transpose()
 {
 	float temp[9];
@@ -128,6 +126,8 @@ mat3 mat3::getTranspose()
 	return temp;
 }
 
+
+//TODO
 mat3 mat3::getInverse() const
 {
 	return mat3();
@@ -136,17 +136,17 @@ mat3 mat3::getInverse() const
 //2d
 mat3 mat3::translation(float x, float y)
 {
-	return mat3(1,0,x,0,1,y,0,0,1);
+	return mat3(1, 0, 0, 0, 1, 0, x, y, 1);
 }
 
 mat3 mat3::translation(const vec2 & vec)
 {
-	return mat3(1, 0, vec.x, 0, 1, vec.y, 0, 0, 1);
+	return mat3(1,0,0,0,1,0,vec.x,vec.y,1);
 }
 
 mat3 mat3::rotation(float rot) //rot in radians
 {
-	return mat3(cos(rot),-sin(rot),0,sin(rot),cos(rot),0,0,0,1);
+	return mat3(cos(rot),sin(rot),0,-sin(rot),cos(rot),0,0,0,1);
 }
 
 mat3 mat3::scale(float xScale, float yScale)
@@ -156,12 +156,12 @@ mat3 mat3::scale(float xScale, float yScale)
 
 vec3 mat3::operator*(const vec3 & rhs) const
 {
-	vec3 temp = { m[0] * rhs.x + m[1] * rhs.y + m[2] * rhs.z,m[3] * rhs.x + m[4] * rhs.y + m[5] * rhs.z,m[6] * rhs.x + m[7] * rhs.y + m[8] * rhs.z };
+	vec3 temp = { x1 * rhs.x + y1 * rhs.y + z1  * rhs.z, x2 * rhs.x + y2 * rhs.y + z2 * rhs.z, x3 * rhs.x + y3 * rhs.y + z3 * rhs.z };
 	return temp;
 }
 
 vec2 mat3::operator*(const vec2 & rhs) const
 {
-	vec2 temp = { m[0] * rhs.x + m[2] * rhs.y, m[1] * rhs.x + m[3] * rhs.y};
+	vec2 temp = { x1 * rhs.x + y1 * rhs.y, x2 * rhs.x + z1 * rhs.y};
 	return temp;
 }

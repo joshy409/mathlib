@@ -73,9 +73,18 @@ int main() {
 	std::cout << std::endl;
 	
 	a.set(1, 2, 3, 4, 5, 6, 7, 8, 9);
+	//a.transpose();
+	for (int i = 0; i < 3; i++) {
+		std::cout << a.m[i] << " " << a.m[i+3] << " " << a.m[i+6] << " ";
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+
+	a.set(1, 2, 3, 4, 5, 6, 7, 8, 9);
 	a.transpose();
-	for (int i = 0; i < 9; i++) {
-		std::cout << a.m[i] << " ";
+	for (int i = 0; i < 3; i++) {
+		std::cout << a.m[i] << " " << a.m[i + 3] << " " << a.m[i + 6] << " ";
+		std::cout << std::endl;
 	}
 	std::cout << std::endl;
 
