@@ -94,6 +94,7 @@ mat3 mat3::identity()
 	return mat3(1,0,0,0,1,0,0,0,1);
 }
 
+//change to row base?
 void mat3::set(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9)
 {
 	xAxis = vec3{ m1,m2,m3 };
@@ -155,7 +156,7 @@ mat3 mat3::scale(float xScale, float yScale)
 
 vec3 mat3::operator*(const vec3 & rhs) const
 {
-	vec3 temp = { m[0] * rhs.x + m[3] * rhs.y + m[6] * rhs.z,m[1] * rhs.x + m[4] * rhs.y + m[7] * rhs.z,m[2] * rhs.x + m[5] * rhs.y + m[8] * rhs.z };
+	vec3 temp = { m[0] * rhs.x + m[1] * rhs.y + m[2] * rhs.z,m[3] * rhs.x + m[4] * rhs.y + m[5] * rhs.z,m[6] * rhs.x + m[7] * rhs.y + m[8] * rhs.z };
 	return temp;
 }
 
