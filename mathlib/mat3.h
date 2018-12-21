@@ -78,6 +78,9 @@ public:
 	// returns a transposed copy of the matrix
 	mat3 getTranspose();
 
+	//returns determinant  of 2x2 matrix
+	float determinant(int index1, int index2);
+
 	//returns a inverse copy of the matrix
 	mat3 getInverse() const;
 

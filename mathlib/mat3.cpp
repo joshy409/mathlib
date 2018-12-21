@@ -35,33 +35,38 @@ mat3 mat3::operator*(const mat3 & rhs) const
 {
 	mat3 temp;
 	temp.xAxis = vec3{ x1*rhs.x1 + y1 * rhs.x2 + z1 * rhs.x3,
-		               x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
-		               x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3, };
+		               x2*rhs.x1 + y2 * rhs.x2 + z2 * rhs.x3,
+		               x3*rhs.x1 + y3 * rhs.x2 + z3 * rhs.x3 };
 
-	temp.yAxis = vec3{ x2*rhs.x1 + y2 * rhs.x1 + z2 * rhs.x1,
-		               x2*rhs.y2 + y2 * rhs.y2 + z2 * rhs.y3,
-		               x2*rhs.z2 + y2 * rhs.z2 + z2 * rhs.z3, };
+	temp.yAxis = vec3{ x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
+					   x2*rhs.y1 + y2 * rhs.y2 + z2 * rhs.y3,
+					   x3*rhs.y1 + y3 * rhs.y2 + z3 * rhs.y3 };
 
-	temp.zAxis = vec3{ x3*rhs.x1 + y3 * rhs.x1 + z3 * rhs.x1,
-		               x3*rhs.y2 + y3 * rhs.y2 + z3 * rhs.y3,
-		               x3*rhs.z2 + y3 * rhs.z2 + z3 * rhs.z3, };
+	temp.zAxis = vec3{ x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3,
+					   x2*rhs.z1 + y2 * rhs.z2 + z2 * rhs.z3,
+					   x3*rhs.z1 + y3 * rhs.z2 + z3 * rhs.z3 };
 
 	return temp;
 }
 
 mat3 & mat3::operator*=(const mat3 & rhs)
 {
-	xAxis = vec3{ x1*rhs.x1 + y1 * rhs.x2 + z1 * rhs.x3,
-		          x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
-		          x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3, };
+	mat3 temp;
+	temp.xAxis = vec3{ x1*rhs.x1 + y1 * rhs.x2 + z1 * rhs.x3,
+		x2*rhs.x1 + y2 * rhs.x2 + z2 * rhs.x3,
+		x3*rhs.x1 + y3 * rhs.x2 + z3 * rhs.x3 };
 
-	yAxis = vec3{ x2*rhs.x1 + y2 * rhs.x1 + z2 * rhs.x1,
-		          x2*rhs.y2 + y2 * rhs.y2 + z2 * rhs.y3,
-		          x2*rhs.z2 + y2 * rhs.z2 + z2 * rhs.z3, };
+	temp.yAxis = vec3{ x1*rhs.y1 + y1 * rhs.y2 + z1 * rhs.y3,
+		x2*rhs.y1 + y2 * rhs.y2 + z2 * rhs.y3,
+		x3*rhs.y1 + y3 * rhs.y2 + z3 * rhs.y3 };
 
-	zAxis = vec3{ x3*rhs.x1 + y3 * rhs.x1 + z3 * rhs.x1,
-		          x3*rhs.y2 + y3 * rhs.y2 + z3 * rhs.y3,
-		          x3*rhs.z2 + y3 * rhs.z2 + z3 * rhs.z3, };
+	temp.zAxis = vec3{ x1*rhs.z1 + y1 * rhs.z2 + z1 * rhs.z3,
+		x2*rhs.z1 + y2 * rhs.z2 + z2 * rhs.z3,
+		x3*rhs.z1 + y3 * rhs.z2 + z3 * rhs.z3 };
+
+	xAxis = temp.xAxis;
+	yAxis = temp.yAxis;
+	zAxis = temp.zAxis;
 
 	return *this;
 }
@@ -128,6 +133,13 @@ mat3 mat3::getTranspose()
 
 
 //TODO
+float mat3::determinant(int index1, int index2)
+{
+	return 0.0f;
+}
+
+
+//TODO
 mat3 mat3::getInverse() const
 {
 	return mat3();
@@ -162,6 +174,6 @@ vec3 mat3::operator*(const vec3 & rhs) const
 
 vec2 mat3::operator*(const vec2 & rhs) const
 {
-	vec2 temp = { x1 * rhs.x + y1 * rhs.y, x2 * rhs.x + z1 * rhs.y};
+	vec2 temp = { x1 * rhs.x + y1 * rhs.y, x2 * rhs.x + y2 * rhs.y};
 	return temp;
 }
