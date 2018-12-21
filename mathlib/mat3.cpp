@@ -111,9 +111,11 @@ void mat3::set(float * ptr)
 
 void mat3::transpose()
 {
-	xAxis = { m[0],m[3],m[6] };
-	yAxis = { m[1],m[4],m[7] };
-	zAxis = { m[2],m[5],m[8] };
+	float temp[9];
+	std::copy(m, m + 9, temp);
+	xAxis = { temp[0],temp[3],temp[6] };
+	yAxis = { temp[1],temp[4],temp[7] };
+	zAxis = { temp[2],temp[5],temp[8] };
 }
 
 mat3 mat3::getTranspose()
@@ -128,4 +130,37 @@ mat3 mat3::getTranspose()
 mat3 mat3::getInverse() const
 {
 	return mat3();
+}
+
+//2d
+mat3 mat3::translation(float x, float y)
+{
+	return mat3(1,0,x,0,1,y,0,0,1);
+}
+
+mat3 mat3::translation(const vec2 & vec)
+{
+	return mat3(1, 0, vec.x, 0, 1, vec.y, 0, 0, 1);
+}
+
+mat3 mat3::rotation(float rot) //rot in radians
+{
+	return mat3(cos(rot),-sin(rot),0,sin(rot),cos(rot),0,0,0,1);
+}
+
+mat3 mat3::scale(float xScale, float yScale)
+{
+	return mat3(xScale,0,0,0,yScale,0,0,0,1);
+}
+
+vec3 mat3::operator*(const vec3 & rhs) const
+{
+	vec3 temp = { m[0] * rhs.x + m[3] * rhs.y + m[6] * rhs.z,m[1] * rhs.x + m[4] * rhs.y + m[7] * rhs.z,m[2] * rhs.x + m[5] * rhs.y + m[8] * rhs.z };
+	return temp;
+}
+
+vec2 mat3::operator*(const vec2 & rhs) const
+{
+	vec2 temp = { m[0] * rhs.x + m[2] * rhs.y, m[1] * rhs.x + m[3] * rhs.y};
+	return temp;
 }

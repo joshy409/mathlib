@@ -62,6 +62,23 @@ int main() {
 	std::cout << std::endl;
 
 
+	a == mat3(0,0,0,0,0,0,0,0,0) ? std::cout << "true" : std::cout << "false";
+	std::cout << std::endl;
+	a != b ? std::cout << "true" : std::cout << "false";
+	std::cout << std::endl;
+	mat3 test = mat3::identity();
+	for (int i = 0; i < 9; i++) {
+		std::cout << test.m[i] << " ";
+	}
+	std::cout << std::endl;
 	
+	a.set(1, 2, 3, 4, 5, 6, 7, 8, 9);
+	a.transpose();
+	for (int i = 0; i < 9; i++) {
+		std::cout << a.m[i] << " ";
+	}
+	std::cout << std::endl;
+
+
 	return 0;
 }
