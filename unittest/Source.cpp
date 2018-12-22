@@ -4,7 +4,8 @@
 #include "vec2.h"
 #include "vec3.h"
 #include "vec4.h"
-#include "mat3.h"
+#include "mat3.h" 
+#include "mat4.h"
 
 int main() {
 
@@ -93,5 +94,38 @@ int main() {
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+
+
+	a = a.rotation(3.98f);
+	for (int i = 0; i < 3; i++) {
+		std::cout << a.m[i] << " " << a.m[i + 3] << " " << a.m[i + 6] << " ";
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+
+	vec2 v2a(13.5f, -48.23f), v2b(5, 3.99f), v2c;
+	v2c = v2a + v2b;
+	vec3 v3a(13.5f, -48.23f, 862), v3b(5, 3.99f, -12), v3c;
+	v3c = v3a + v3b;
+	vec4 v4a(13.5f, -48.23f, 862, 0), v4b(5, 3.99f, -12, 1), v4c;
+	v4c = v4a + v4b;
+
+	mat3 m3a, m3b, m3c, m3d;
+	mat4 m4a, m4b, m4c, m4d;
+	
+	v2a = vec2(13.5f, -48.23f);
+	v3a = vec3(13.5f, -48.23f, 862);
+	m3a = mat3(1, 0, 0, 0, -0.668648f, -0.743579f, 0, 0.743579f, -0.668648f);
+	m3b = mat3(-0.188077f, 0, -0.982154f, 0, 1, 0, 0.982154f, 0, -0.188077f);
+	v3b = m3b * v3a;
+	v3c = m3c * v3a;
+	v4a = vec4(13.5f, -48.23f, 862, 0);
+	v4b = m4b * v4a;
+	v4c = m4c * v4a;
+
+	std::cout << v3b.x << " " << v3b.y << " " << v3b.z << std::endl;
+	std::cout << v3c.x << " " << v3c.y << " " << v3c.z << std::endl;
+
+
 	return 0;
 }

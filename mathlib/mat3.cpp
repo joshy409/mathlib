@@ -112,7 +112,6 @@ void mat3::set(float * ptr)
 	std::copy(ptr, ptr + 9, m);
 }
 
-//TODO
 void mat3::transpose()
 {
 	float temp[9];
@@ -145,7 +144,7 @@ mat3 mat3::getInverse() const
 	return mat3();
 }
 
-//2d
+
 mat3 mat3::translation(float x, float y)
 {
 	return mat3(1, 0, 0, 0, 1, 0, x, y, 1);
@@ -164,6 +163,11 @@ mat3 mat3::rotation(float rot) //rot in radians
 mat3 mat3::scale(float xScale, float yScale)
 {
 	return mat3(xScale,0,0,0,yScale,0,0,0,1);
+}
+
+mat3 mat3::scale(const vec2 & vec)
+{
+	return mat3(vec.x, 0, 0, 0, vec.y, 0, 0, 0, 1);
 }
 
 vec3 mat3::operator*(const vec3 & rhs) const

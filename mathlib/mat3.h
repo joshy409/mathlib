@@ -92,6 +92,7 @@ public:
 	static mat3 rotation(float rot);
 	// returns a translation matrix with the given changes for each axis
 	static mat3 scale(float xScale, float yScale);
+	static mat3 scale(const vec2 &vec);
 
 	// transforms a 4D vector by performing 4x4 x 4x1 matrix multiplication
 	vec3 operator*(const vec3 &rhs) const;
