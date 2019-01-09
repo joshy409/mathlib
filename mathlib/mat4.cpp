@@ -10,7 +10,7 @@ mat4::mat4()
 
 mat4::mat4(float * ptr)
 {
-	std::copy(ptr, ptr + 9, m);
+	std::copy(ptr, ptr + 16, m);
 }
 
 mat4::mat4(float x1, float x2, float x3, float x4,
