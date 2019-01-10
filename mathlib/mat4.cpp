@@ -43,8 +43,8 @@ mat4 mat4::rotation(float x, float y, float z)
 {
 	mat4 rotationMatrix;
 	mat4 xRotationMatrix = mat4::rotationX(x);
-	mat4 yRotationMatrix = mat4::rotationX(y);
-	mat4 zRotationMatrix = mat4::rotationX(z);
+	mat4 yRotationMatrix = mat4::rotationY(y);
+	mat4 zRotationMatrix = mat4::rotationZ(z);
 
 	rotationMatrix = xRotationMatrix * yRotationMatrix;
 	rotationMatrix *= zRotationMatrix;
@@ -81,7 +81,7 @@ void mat4::set(float m1, float m2, float m3, float m4, float m5, float m6, float
 
 void mat4::set(float * ptr)
 {
-	std::copy(ptr, ptr + 9, m);
+	std::copy(ptr, ptr + 16, m);
 }
 
 void mat4::transpose()
