@@ -5,18 +5,19 @@
 
 struct transform2d
 {
-	vec2 localPosition() const;
-	float localRotation() const;
-	vec2 localScale() const;
+	transform2d();
 
-	void setLocalPosition(const vec2 &newPos);
-	void setLocalRotation(const float newRot);
-	void setLocalScale(const vec2 &newScale);
+	vec2 localPos;
+	float localRot;
+	float localScale;
 
-	void translate(const vec2& offset);
+	void translate(const vec2 &offset);
 	void rotate(const float angle);
-	void scale(const vec2 & scale);
+	void scale(const float scale);
 
-private:
-	mat3 trsMatrix = { 1,0,0,0,1,0,0,0,1 };
+	//void lookAt(const transform2d &target);
+	//vec2 forward() const;
+	//void setForward(const vec2 &newFwd);
+
+	mat3 getTRSMatrix() const;
 };

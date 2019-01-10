@@ -106,7 +106,7 @@ vec2 & vec2::normalize()
 		return *this;
 	}
 	else {
-		float mag = this->magnitude();
+		float mag = magnitude();
 		x /= mag; y /= mag;
 		return *this;
 	}
@@ -114,7 +114,7 @@ vec2 & vec2::normalize()
 
 vec2 vec2::getNormalized() const
 {
-	float mag = this->magnitude();
+	float mag = magnitude();
 	return vec2(x / mag, y / mag);
 }
 
