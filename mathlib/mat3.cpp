@@ -178,6 +178,6 @@ vec3 mat3::operator*(const vec3 & rhs) const
 
 vec2 mat3::operator*(const vec2 & rhs) const
 {
-	vec2 temp = { x1 * rhs.x + y1 * rhs.y, x2 * rhs.x + y2 * rhs.y};
+	vec2 temp = { x1 * rhs.x + y1 * rhs.y + z1 * 1, x2 * rhs.x + y2 * rhs.y + z2 * 1};
 	return temp;
 }

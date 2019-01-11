@@ -5,9 +5,14 @@ class Sprite
 {
 public:
 	Sprite();
+	Sprite(std::string texturePath);
 	~Sprite();
 
 	transform2d transform;
+	Rectangle sourceRec;
+	Rectangle destRec;
+	vec2 origin;
+
 	void draw();
 	void setPos(const vec2 _pos);
 	void resetPos();

@@ -88,6 +88,9 @@
 #define DEG2RAD (PI/180.0f)
 #define RAD2DEG (180.0f/PI)
 
+#define screenWidth 1856
+#define screenHeight  1024
+
 // raylib Config Flags
 #define FLAG_SHOW_LOGO              1       // Set to show raylib logo at startup
 #define FLAG_FULLSCREEN_MODE        2       // Set to run program in fullscreen
@@ -177,6 +180,19 @@
 #define KEY_X                88
 #define KEY_Y                89
 #define KEY_Z                90
+
+//Keypad keys
+
+#define KEY_KP_0  320
+#define KEY_KP_1  321
+#define KEY_KP_2  322
+#define KEY_KP_3  323
+#define KEY_KP_4  324
+#define KEY_KP_5  325
+#define KEY_KP_6  326
+#define KEY_KP_7  327
+#define KEY_KP_8  328
+#define KEY_KP_9  329
 
 // Android Physical Buttons
 #define KEY_BACK              4

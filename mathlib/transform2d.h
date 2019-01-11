@@ -18,6 +18,7 @@ struct transform2d
 	//void lookAt(const transform2d &target);
 	//vec2 forward() const;
 	//void setForward(const vec2 &newFwd);
-
+	
 	mat3 getTRSMatrix() const;
+	mat3 getTSMatrix() const;
 };
