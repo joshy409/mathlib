@@ -2,9 +2,9 @@
 
 mat3::mat3()
 {
-	xAxis = { 0,0,0 };
-	yAxis = { 0,0,0 };
-	zAxis = { 0,0,0 };
+	xAxis = { 1,0,0 };
+	yAxis = { 0,1,0 };
+	zAxis = { 0,0,1 };
 }
 
 mat3::mat3(float * ptr)

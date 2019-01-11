@@ -2,10 +2,10 @@
 
 mat4::mat4()
 {
-	xAxis = { 0,0,0,0 };
-	yAxis = { 0,0,0,0 };
-	zAxis = { 0,0,0,0 };
-	wAxis = { 0,0,0,0 };
+	xAxis = { 1,0,0,0 };
+	yAxis = { 0,1,0,0 };
+	zAxis = { 0,0,1,0 };
+	wAxis = { 0,0,0,1 };
 }
 
 mat4::mat4(float * ptr)

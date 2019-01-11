@@ -59,9 +59,11 @@ void update(Sprite &tank, float &scale, ChildSprite &cannon, Sprite &tank2, floa
 
 	if (IsKeyDown(KEY_KP_4)) {
 		tank2.transform.localRot -= .5;
+		cannon2.transform.localRot -= .5;
 	}
 	if (IsKeyDown(KEY_KP_6)) {
 		tank2.transform.localRot += .5;
+		cannon2.transform.localRot += .5;
 	}
 
 	if (IsKeyDown(KEY_KP_7)) {

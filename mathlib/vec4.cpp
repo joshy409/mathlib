@@ -7,7 +7,7 @@ vec4::vec4()
 	x = 0;
 	y = 0;
 	z = 0;
-	t = 0;
+	t = 1;
 }
 
 vec4::vec4(float _x, float _y, float _z, float _t)
